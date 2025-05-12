@@ -3,17 +3,26 @@
     "id": 1,
     "icon": {
       "type": "lucide",
-      "name": "cake"
+      "name": "wrench"
     },
-    "text": "1 year old"
+    "type": "lucide",
+    "text": "Software & Tools Engineer"
   },
   {
     "id": 2,
     "icon": {
       "type": "lucide",
-      "name": "earth"
+      "name": "boxes"
+    },
+    "text": "Where Design Meets Code"
+  },
+  {
+    "id": 4,
+    "icon": {
+      "type": "lucide",
+      "name": "squirrel"
     },
     "type": "lucide",
-    "text": "Made in Germany"
+    "text": "Based in Montréal, Canada"
   }
 ]

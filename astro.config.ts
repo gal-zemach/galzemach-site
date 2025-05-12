@@ -19,18 +19,19 @@ export default defineConfig({
     mdx(),
     sitemap(),
     spectre({
-      name: 'Spectre',
+      name: 'Gal Zemach',
       openGraph: {
         home: {
-          title: 'Spectre',
-          description: 'A minimalistic theme for Astro.'
+          title: 'Gal Zemach',
+          description: 'Software & Tools Engineer',
         },
         blog: {
           title: 'Blog',
-          description: 'News and guides for Spectre.'
+          description: 'News, guides and thoughts'
         },
         projects: {
-          title: 'Projects'
+          title: 'Projects',
+          description: 'Some of my personal projects'
         }
       },
       // giscus: {
