@@ -1,9 +1,74 @@
 [
   {
     "id": 1,
-    "duration": "2024 - present",
-    "company": "Astro Community",
-    "title": "Astro Theme",
-    "description": "Existing as an Astro theme for anyone to use."
+    "company": "Moon Active Ltd.",
+    "roles": [
+      {
+        "id": 1,
+        "title": "Client Developer (Unity/C#)",
+        "duration": "Jan 2023 – Jun 2024",
+        "description": [
+          "Re-engineered legacy feature with Spine animation support, boosting performance by ~30%.",
+          "Shipped an RPG-style inventory system powering dynamic rewards for 100 M+ DAUs.",
+          "Delivered bespoke UI widgets that cut designer hand-off time from days to hours.",
+          "Owned Jenkins CI/CD pipelines, keeping nightly mobile builds green and test-covered."
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Technical Art Tech Lead",
+        "duration": "Jan 2022 – Jan 2023",
+        "description": [
+          "Built PyQt automation tools, freeing 200+ Tech-Art hours per quarter.",
+          "Authored GLSL/HLSL shaders that unlocked new VFX pipelines for seasonal events.",
+          "Deployed real-time asset-validation & debugging dashboards for faster triage.",
+          "Mentored five Tech Artists and codified best practices adopted studio-wide."
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Technical Artist",
+        "duration": "Sep 2019 – Jan 2022",
+        "description": [
+          "Scripted Unity editor extensions to reskin features in less than half the original timeline.",
+          "Partnered with design & art to remove pipeline bottlenecks and streamline hand-offs.",
+          "Automated event-content setup, reducing repetitive tasks for live teams.",
+          "Provided day-to-day shader tweaks and tooling support across multiple live squads."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "company": "Imperva Inc.",
+    "roles": [
+      {
+        "id": 4,
+        "title": "QA Engineer",
+        "duration": "Dec 2012 – Oct 2013",
+        "description": [
+          "Designed automated and manual test suites for a cross-platform data-security agent.",
+          "Isolated critical database regressions (Oracle / SQL Server) before enterprise releases.",
+          "Collaborated with developers to reproduce, diagnose, and ship fixes across OS variants."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "company": "Independent / Personal Projects",
+    "roles": [
+      {
+        "id": 5,
+        "title": "Tools & Graphics Programmer",
+        "duration": "Jun 2024 – Present",
+        "description": [
+          "Prototyping Procedural Toolbox for Unreal and a lightweight File-Explorer mini-tool.",
+          "Implemented a performant Wave-Function-Collapse generator in modern C++ / openFrameworks.",
+          "Released an Avalonia-UI Game Localization Manager demonstrating MVVM best practices.",
+          "Exploring Metal shader workflows and advanced real-time rendering techniques."
+        ]
+      }
+    ]
   }
 ]

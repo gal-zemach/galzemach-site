@@ -2,6 +2,7 @@
 import '../styles/index.css';
 
 import ProfilePicture from '../assets/profile2.png';
+import WorkExperience from '../content/work-experience.mdx';
 
 import Card from '../components/Card.astro';
 import Layout from '../layouts/Layout.astro';
@@ -12,7 +13,7 @@ import { getEntry } from 'astro:content';
 import { render } from 'astro:content';
 import { name, openGraph } from 'spectre:globals';
 
-const [posts, projects, about, workExperience, quickInfo, socials] = await Promise.all([
+const [posts, projects, about, workExperience2, quickInfo, socials] = await Promise.all([
 	getCollection('posts', (post) => post.data.draft !== true),
 	getCollection('projects'),
 	getEntry('other', 'about'),
@@ -106,16 +107,25 @@ const { Content: About } = await render(about!);
 				<Icon type='lucide' name="briefcase-business" width={24} height={24} class='glow-icon' />
 				<h2>Work Experience</h2>
 			</div>
-			<div class="work-experience-container">
-				{workExperience.reverse().map((entry) => (
-					<div class="work-experience-entry">
-						<span class="work-experience-duration">{entry.data.duration}</span>
-						<h3 class="work-experience-company">{entry.data.company}</h3>
-						<span class="work-experience-role">{entry.data.title}</span>
-						<p class="work-experience-desc">{entry.data.description}</p>
-					</div>
-				))}
+			<div class="work-mdx">
+				<WorkExperience />
 			</div>
+			<!--{workExperience2.map(({ data }) => (-->
+			<!--	<div class="company-group" key={data.id}>-->
+			<!--		<h2>{data.company}</h2>-->
+			<!--		{data.roles.map(role => (-->
+			<!--			<div class="work-experience-entry" key={role.id}>-->
+			<!--				<div class="work-experience-duration">{role.duration}</div>-->
+			<!--				<div class="work-experience-role">{role.title}</div>-->
+			<!--				<ul class="work-experience-desc">-->
+			<!--					{role.description.map((line, i) => (-->
+			<!--						<li key={i}>{line}</li>-->
+			<!--					))}-->
+			<!--				</ul>-->
+			<!--			</div>-->
+			<!--		))}-->
+			<!--	</div>-->
+			))}
 		</Card>
 	</div>
 </Layout>

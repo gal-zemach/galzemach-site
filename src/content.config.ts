@@ -36,15 +36,20 @@ const socials = defineCollection({
   })
 });
 
-const workExperience = defineCollection({
+const roleSchema = z.object({
+  id:        z.number(),
+  title:     z.string(),
+  duration:  z.string(),
+  description: z.array(z.string()),
+});
+
+export const workExperience = defineCollection({
   loader: file("src/content/work.json"),
   schema: z.object({
-    id: z.number(),
-    title: z.string(),
+    id:      z.number(),
     company: z.string(),
-    duration: z.string(),
-    description: z.string(),
-  })
+    roles:   z.array(roleSchema),
+  }),
 });
 
 const tags = defineCollection({
