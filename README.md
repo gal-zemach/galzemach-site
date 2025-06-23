@@ -1,7 +1,7 @@
 # Gal Zemach — Portfolio & Blog
 
-This is my personal website, built with [Astro](https://astro.build) and based on the [Spectre](https://github.com/louisescher/spectre) template.  
-It serves as a portfolio and blog, where I share technical projects and write about game development, tools engineering, and creative tech.
+This is my personal website — a combined CV, portfolio, and blog where I share technical projects and write about game development, tools engineering, and creative tech.
+It’s built with [Astro](https://astro.build) and based on the [Spectre](https://github.com/louisescher/spectre) template, which I plan to customize further as I experiment with web development.
 
 ## Features
 
@@ -37,8 +37,6 @@ To deploy your own version:
 ## Template Credits
 
 Built on top of the [Spectre](https://github.com/louisescher/spectre) Astro template by Louise Escher, with light customization.
-
----
 
 ## License
 
