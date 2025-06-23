@@ -1,0 +1,40 @@
+---
+title: WFC Tile-Map Generator
+date: 03-24-2025
+description: A C++ / openFrameworks demo that uses Wave Function Collapse to generate 2-D tile maps from XML tile sets.
+image: ""
+info:
+  - text: GitHub
+    link: https://github.com/gal-zemach/WFC-tile-map-generator
+    icon:
+      type: lucide
+      name: github
+---
+
+A compact C++ implementation of **Wave Function Collapse (WFC)** used to create procedural tile maps with minimal hard-coding. The demo renders live in openFrameworks and visualises each collapse step.
+
+<div style={{ textAlign: "center" }}>
+    <img src="/img/wfc-demo.gif" alt="Tile map resolving" width="400"/>
+</div>
+
+## Features
+
+- Edge-based adjacency rules loaded from XML
+- Tile symmetries (rotations / reflections) to reduce authoring effort
+- Step-by-step or full-map generation modes
+- MIT-licensed *Knots* tile set by Maxim Gumin included
+
+## Directory Glance
+
+src/ # openFrameworks app + generator core
+data/TileSets # XML + sprites
+
+## Roadmap
+
+- Faster neighbour lookup with pre-computed arrays
+- Generic generator decoupled from rendering layer
+- Minimal UI to tweak tile probabilities on the fly
+
+---
+
+Released under the MIT license.

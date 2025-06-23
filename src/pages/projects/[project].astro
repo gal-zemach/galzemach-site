@@ -18,7 +18,7 @@ interface Props {
 const { project } = Astro.props;
 
 export const getStaticPaths = (async () => {
-  const projects = await getCollection('projects');
+  const projects = await getCollection('projects', (project) => project.data.draft !== true);
 
   return projects.map((project) => ({ params: { project: project.id }, props: { project } }));
 }) satisfies GetStaticPaths;
@@ -56,19 +56,23 @@ const { Content } = await render(project);
   <article slot="right" data-pagefind-body>
     <Card>
       <div class="article-header" id="_top" data-pagefind-ignore>
-        {project.data.image && <ImageGlow quality={100} class="article-image" src={project.data.image} alt={project.data.title} />}
-        <div class="header">
-          <div>
-            <h1 class="no-mt article-h1">{project.data.title}</h1>
-          </div>
-          <div class="article-info">
-            <span>{project.data.date.toLocaleDateString()}</span>
+        <div class={`article-header-inner ${project.data.image ? "has-image" : "no-image"}`}>
+          {project.data.image && (
+              <ImageGlow quality={100} class="article-image" src={project.data.image} alt={project.data.title} />
+          )}
+          <div class="header">
+            <div>
+              <h1 class="no-mt article-h1">{project.data.title}</h1>
+            </div>
+            <div class="article-info">
+              <span>{project.data.date.toLocaleDateString()}</span>
+            </div>
           </div>
         </div>
       </div>
       <Content />
       <hr class="end-of-article" />
-      <a href="/projects" class="block-link" data-pagefind-ignore>← Back to projects</a>
+      <a href="/blog" class="block-link" data-pagefind-ignore>← Back to blog</a>
     </Card>
   </article>
 </Layout>

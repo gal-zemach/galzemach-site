@@ -15,7 +15,7 @@ import { name, openGraph } from 'spectre:globals';
 
 const [posts, projects, about, workExperience2, quickInfo, socials] = await Promise.all([
 	getCollection('posts', (post) => post.data.draft !== true),
-	getCollection('projects'),
+	getCollection('projects', (project) => project.data.draft !== true),
 	getEntry('other', 'about'),
 	getCollection('workExperience'),
 	getCollection('quickInfo'),
@@ -125,7 +125,7 @@ const { Content: About } = await render(about!);
 			<!--			</div>-->
 			<!--		))}-->
 			<!--	</div>-->
-			))}
+			<!--))}-->
 		</Card>
 	</div>
 </Layout>

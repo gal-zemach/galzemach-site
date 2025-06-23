@@ -1,0 +1,45 @@
+---
+title: Game Localization Manager
+date: 04-09-2025
+description: A cross-platform desktop tool built with Avalonia UI to edit JSON-based localization files for games.
+image: ""
+info:
+  - text: GitHub
+    link: https://github.com/gal-zemach/GameLocalizationManagerApp
+    icon:
+      type: lucide
+      name: github
+---
+
+A lightweight desktop editor that lets you view, edit, and validate JSON localization strings without touching spreadsheets.
+
+## Why I Built It
+
+I wanted a first hands-on project with **Avalonia UI** and MVVM. Managing localisation files is a real-world pain point, so the app focuses on fast iteration and clear validation.
+
+## Core Capabilities
+
+- Load any JSON file that follows the *LocalizedStrings* schema
+- Inspect keys, default text, and all language translations
+- Add / remove languages or entire entries on the fly
+- Save back to JSON with a single click
+
+## Tech Stack
+
+C# · .NET 6 · Avalonia UI · System.Text.Json · MVVM
+
+## Next Up
+
+- Prompt on unsaved changes
+- Undo / redo that covers all operations
+- Inline fold-out editor instead of a dedicated side panel
+
+## Window Screenshots
+
+<div style={{ textAlign: "center" }}>
+    <img src="/img/localization-manager-demo.gif" alt="Tile map resolving" width="800"/>
+</div>
+
+---
+
+Distributed under the MIT license.

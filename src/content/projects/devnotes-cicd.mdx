@@ -1,0 +1,42 @@
+---
+title: DevNotes CI/CD
+date: 06-02-2025
+description: A containerized full-stack notes app showcasing Docker, local Kubernetes (kind), and Jenkins CI/CD in a single repo.
+image: ""
+info:
+  - text: GitHub
+    link: https://github.com/gal-zemach/devnotes-docker-k8s-ci
+    icon:
+      type: lucide
+      name: github
+---
+
+DevNotes is a self-contained playground for cloud-native tooling. The project packages a trivial “notes” web-app into separate backend and frontend containers, deploys them to a local **kind** cluster, and automates the workflow with a Jenkins pipeline.
+
+## Highlights
+
+- **Docker Compose** for one-command local spins
+- **Kubernetes (kind)** manifests with fixed port mapping & a PVC that survives pod restarts
+- **Jenkinsfile** that builds images and deploys to the cluster
+- Bootstrap script that builds, loads, and applies everything in one go
+
+## Stack
+
+Docker · kind · kubectl · Jenkins · Flask · Nginx
+
+## Quick Start
+
+```bash
+# Docker-compose
+docker-compose up --build
+
+# Kubernetes
+./bootstrap-kind.sh
+
+# Jenkins (optional)
+cd jenkins && docker-compose up --build -d
+```
+
+Visit http://localhost:30080 (kind) or http://localhost:8000 (compose) to try the app.
+
+DevNotes is licensed under the MIT license.

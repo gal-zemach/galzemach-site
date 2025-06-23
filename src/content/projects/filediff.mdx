@@ -1,0 +1,49 @@
+---
+title: FileDiff
+date: 05-21-2025
+description: A cross-platform CLI that prints human-readable diffs between two files using Myers’ shortest-edit-script algorithm.
+image: ""
+info:
+  - text: GitHub
+    link: https://github.com/gal-zemach/FileDiff
+    icon:
+      type: lucide
+      name: github
+---
+
+**FileDiff** is a minimalist yet fast command-line utility that reveals the exact insertions and deletions required to turn one file into another.
+Under the hood it implements Myers’ algorithm—the same strategy used by Git and GNU diff—written from scratch in C# / .NET 9.
+
+## Highlights
+
+- **Myers shortest-edit-script** in pure C#
+- Unified, human-friendly diff output
+- Self-contained binaries for **Windows (x64)** and **macOS (ARM)**
+- Clean separation: algorithm · parser · printer
+- Optimised `OffsetArray` for constant-time diagonal look-ups
+
+## Quick Start
+
+```bash
+# build self-contained release (Windows example)
+dotnet publish -r win-x64 -c Release --self-contained true
+
+# compare two files
+FileDiff file1 file2
+```
+
+## File Structure
+Common/OffsetArray.cs        # diagonal-buffer helper
+Diff/                        # algorithm + pretty printer
+  ├─ Algorithm/MyersComparer.cs
+  ├─ FileComparer.cs
+  └─ Data/ (Insert | Remove | Instruction)
+Program.cs                   # entry point
+
+## Roadmap
+- Side-by-side diff view
+- Syntax-aware colouring
+- Traceback refactor to reduce duplication
+
+
+FileDiff is released under the MIT license.
