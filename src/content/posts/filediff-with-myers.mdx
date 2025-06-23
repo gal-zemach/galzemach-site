@@ -1,0 +1,68 @@
+---
+title: "Building a File Diff Tool with Myers Algorithm"
+description: "What I Learned from Recreating Unix Diff from Scratch."
+image: ""
+createdAt: 05-28-2025
+draft: false
+tags:
+  - guide
+  - tools
+  - c#
+---
+
+## Introduction
+
+During a technical interview, I had to write a CLI that compares two files. Rather than brute-force a solution, I used the challenge as an excuse to implement the same algorithm that powers Git diff and GNU diff: **Myers’ algorithm**.
+For a tools developer, diffing sits in this sweet spot—mixing algorithmic depth with practical, day-to-day utility. Think comparing files or assets to spot configuration differences, or using Git to trace or commit changes.
+
+## Why Implement an Algorithm
+
+As a tools developer, I normally avoid solving problems that have been solved well before. But this felt like the right moment to make an exception.
+This assignment was small, self-contained, and genuinely interesting. Building the diff myself:
+
+- let me explore a classic algorithm in depth
+- added substance to what would’ve been a basic CLI
+- produced a reusable snippet I can embed in future tools
+
+## A 60-Second Primer on Myers’ Algorithm
+
+Myers finds the **shortest edit script**—the smallest set of inserts and deletes that turns sequence A into sequence B.
+
+1. **Edit graph**: Each node represents a pair of positions `(i, j)` in the two sequences.
+2. **Moves**
+   - → (delete from A)
+   - ↓ (insert from B)
+   - ↘︎ (diagonal, no cost) when `A[i] == B[j]`
+3. **Search**: Walk the graph breadth-first, layer by layer, until you reach the bottom-right corner.
+4. **Traceback**: Follow the path backward to produce the list of edits.
+5. **Complexity**: If `N = |A| + |B|` and `D = edits`, then the algorithm runs in `O(ND)` time and `O(ND²)` space.
+
+## Implementation Highlights (C# / .NET 9)
+
+- **CLI UX** – `diff fileA.txt fileB.txt` prints a unified diff.
+- **Enum-based ops** – `Insert`, `Delete` keep the code readable.
+- **Edge cases** – Handles empty files, identical files, trailing whitespace.
+- **Separation of concerns** – Parsing, diffing, and printing live in separate classes for easier testing.
+
+## What Went Well
+
+- Clean layers made unit tests trivial.
+- Myers’ taught me a lot about dynamic programming and greedy vs. optimal paths.
+- Even “tiny” tools surface nasty edge cases—traceback logic was trickier than the forward search!
+
+## What I’d Improve
+
+As with any project, it’s important to know when to stop polishing. In this case, I prioritized cleaner logic over strict polymorphism and allowed some code duplication in the traceback to keep things straightforward.
+That said, I’d love to:
+
+- refactor the traceback logic to reduce repetition without over-complicating it
+- add a side-by-side diff view for better readability
+- explore syntax coloring or filetype-aware formatting to make the output easier to scan
+
+## Conclusion
+
+Building this tool deepened both my algorithmic thinking and my appreciation for everyday developer tooling. Even outside the interview context, this is something I could see evolving into a helpful utility for comparing asset metadata or validating generated content in a pipeline.
+
+## Further Reading
+
+[James Coglan – “The Myers Diff Algorithm” (excellent deep dive)](https://blog.jcoglan.com/2017/02/12/the-myers-diff-algorithm-part-1/)

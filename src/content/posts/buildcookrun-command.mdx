@@ -1,0 +1,88 @@
+---
+title: "The BuildCookRun Command"
+description: "Building an Unreal Engine game."
+image: ""
+createdAt: 06-20-2025
+draft: false
+tags:
+  - guide
+  - unreal
+  - build
+---
+
+As a Unity pipeline/tools developer exploring Unreal’s build ecosystem, I wanted to understand Unreal’s build flow and how to translate concepts from Unity (like AssetBundles, CI steps, and multi-platform builds) into Unreal's model.
+
+## General
+
+BuildCookRun is an Unreal Automation Tool (UAT) that compiles the game’s code, cooks its content, packages it into the target platform’s native format, deploys and runs it.
+
+Actual command stages:
+- **Build**: Uses Unreal Build Tool (UBT) to compile the code (C++, both engine & game) to executables
+- **Cook**: Uses UE to cook the content (uassets/umaps)
+- **Stage**: Copies the executables & content to a staging directory
+- **Package**: Packages the project into a platform’s native distribution format (.pak files)
+- **Deploy**: Deploys the build to a target device
+- **Run**: Starts the packaged project on the target platform
+
+### Cooking in Unreal
+Convert raw assets (uasset/umap) to formats supported by the target platform.
+Two ways exist Cook by the Book (CBTB) & Cook on the Fly (COTF), referring to whether assets are created all at once or only when needed.
+.pak files = cooked, compressed, versioned bundles (similar to Unity’s Asset Bundles)
+
+## My Build
+- What I’m building: Lyra, a UE demo project
+- Build configuration: Development
+- Where: Locally on my mac
+- Target: MacOS
+
+### Available Build Configurations
+- Debug: Best for debugging C++ code. Has full debug info and can be attached to a debugger.
+- Development: Main build during development. Can be debugged as well.
+- Shipping: A production build. Standalone, fully optimized, release-ready build.
+
+The command I use for an “everyday” development build, on my development machine.
+
+```
+cd '/Users/Shared/Epic Games/UE_5.X/Engine/Build/BatchFiles/’
+
+./RunUAT.sh BuildCookRun \
+-project={Path to my Unreal project}/{MyProject}.uproject" \
+-noP4 \
+-platform=Mac \
+-clientconfig=Development \
+-serverconfig=Development \
+-cook -allmaps -build -stage -pak \
+-archive \
+-archivedirectory={Build Output Directory} \
+-log={Log Output Directory} -verbose
+```
+
+> Running this helped me understand how modular Unreal's build flow is - **each flag corresponds to a distinct stage that can be split, repeated, or parallelized in CI systems.** This is a key difference from Unity’s monolithic `BuildPipeline.BuildPlayer`.
+
+### Notes/Gotchas
+
+- An important flag I didn’t use here is `-prereqs`. It adds all prerequisites into the build. Very important so we can pass the build to another non-dev machine (f.e. QA).
+- In my case, UAT logs were deleted right when the build finished. This was very annoying. I needed to pipe the terminal output to another file by adding `| tee {output file path}`.
+
+### Flag Descriptions
+
+| `-project` | Path to your project’s .uproject file |
+| --- | --- |
+| `-noP4` | Skips Perforce integration |
+| `-platform` | Target platform |
+| `-clientconfig` | Build configuration for the client (Debug/Development/Shipping) |
+| `-serverconfig`  | Build configuration for the server |
+| `-cook` | Cooks the content. |
+| `-allmaps` | Cooks all levels in the project |
+| `-build` | Builds the source code |
+| `-stage` | Stages the files. This means preparing a single folder with all the needed files (binaries, cooked content, configs) |
+| `-pak` | Packages the content into .pak files (otherwise you’ll retain the original raw assets (.uasset/.umap) |
+| `-prereqs` | Adds all dependencies into the packaged build. Use it if transferring the build to a non-dev machine. Mostly relevant for windows runtime (DirectX, Visual C++, etc.) |
+| `-archive` | Copies the staged folder into a clean, compressed destination |
+| `-archivedirectory` | Build destination path |
+| `-log` | Custom path for the build logs |
+| `-verbose` | Makes the logs verbose |
+
+## Further Reading
+
+[Build Operations: Cook, Package, Deploy, and Run](https://dev.epicgames.com/documentation/en-us/unreal-engine/build-operations-cooking-packaging-deploying-and-running-projects-in-unreal-engine)

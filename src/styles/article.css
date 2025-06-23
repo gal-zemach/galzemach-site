@@ -90,6 +90,19 @@ ol li a.active {
   scroll-margin-top: 2rem;
 }
 
+.article-header-inner.no-image {
+  position: relative;
+  width: 100%;
+  scroll-margin-top: 2rem;
+  padding: 5rem 1.5rem;
+
+  background: linear-gradient(to right, var(--primary), #ffffff05);
+  /*border-left: 6px solid var(--primary);*/
+  /*box-shadow: 0 0 20px #00000040;*/
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
 .header {
   display: flex;
   flex-direction: column;
