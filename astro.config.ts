@@ -10,6 +10,10 @@ import { spectreDark } from './src/ec-theme';
 
 // https://astro.build/config
 export default defineConfig({
+  // @ts-ignore — Astro’s types aren’t updated for this yet
+  experimental: {
+    session: true,
+  },
   site: 'https://galzemach-dev.netlify.app',
   output: 'static',
   integrations: [
