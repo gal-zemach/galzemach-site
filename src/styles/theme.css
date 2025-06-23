@@ -1,0 +1,38 @@
+:root {
+    /* Default */
+    /*--primary: #52DDFF;*/
+    /*--primary-rgb: 82, 221, 255;*/
+    /*--primary-light: #77E4FF;*/
+    /*--primary-lightest: #A6EDFF;*/
+
+    /* Spectre */
+    --primary: #8c5cf5;
+    --primary-rgb: 140, 92, 245;
+    --primary-light: #a277ff;
+    --primary-lightest: #c2a8fd;
+
+    --color-card-background: #121212;
+    --color-card-border: #353535;
+}
+
+.theme-spectre {
+    --primary: #8c5cf5;
+    --primary-rgb: 140, 92, 245;
+    --primary-light: #a277ff;
+    --primary-lightest: #c2a8fd;
+
+    --color-card-background: #121212;
+    --color-card-border: #353535;
+
+}
+
+/*.theme-earth {*/
+/*    --color-background: #f3f0e5;*/
+/*    --color-card:       #c2b280;*/
+/*    --color-highlight:  #6b705c;*/
+/*}*/
+/*.theme-pastel {*/
+/*    --color-background: #fafafa;*/
+/*    --color-card:       #cad2c5;*/
+/*    --color-highlight:  #84a98c;*/
+/*}*/

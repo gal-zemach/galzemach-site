@@ -1,11 +1,13 @@
-:root {
-  --primary: #8c5cf5;
-  /* Needed for some hover effects. This is just the R, G and B values of the hex color above */
-  --primary-rgb: 140, 92, 245;
-  /* Used for links */
-  --primary-light: #a277ff;
-  --primary-lightest: #c2a8fd;
-}
+@import './theme.css';
+
+/*:root {*/
+/*  --primary: #52DDFF;*/
+/*  !* Needed for some hover effects. This is just the R, G and B values of the hex color above *!*/
+/*  --primary-rgb: 82, 221, 255;*/
+/*  !* Used for links *!*/
+/*  --primary-light: #77E4FF;*/
+/*  --primary-lightest: #A6EDFF;*/
+/*}*/
 
 .overview-list {
   list-style-type: none;
