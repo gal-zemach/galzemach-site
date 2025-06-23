@@ -25,14 +25,5 @@
     },
     "text": "Bēhance",
     "link": "https://www.behance.net/GalZemach"
-  },
-  {
-    "id": 4,
-    "icon": {
-      "type": "lucide",
-      "name": "instagram"
-    },
-    "text": "Instagram",
-    "link": "https://www.instagram.com/gal_zemach"
   }
 ]
