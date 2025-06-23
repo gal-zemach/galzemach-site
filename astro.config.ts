@@ -5,12 +5,12 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import spectre from './package/src';
 
-import node from '@astrojs/node';
+import netlify from '@astrojs/netlify';
 import { spectreDark } from './src/ec-theme';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://spectre.louisescher.dev',
+  site: 'https://galzemach-dev.netlify.app',
   output: 'static',
   integrations: [
     expressiveCode({
@@ -47,7 +47,5 @@ export default defineConfig({
       // }
     })
   ],
-  adapter: node({
-    mode: 'standalone'
-  })
+  adapter: netlify()
 });
